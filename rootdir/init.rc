@@ -379,6 +379,12 @@ on boot
 # Define default initial receive window size in segments.
     setprop net.tcp.default_init_rwnd 60
 
+# Start ADB before init.d so we can see errors    
+    start adbd
+
+# Start the init.d service
+    exec /system/bin/sysinit
+
     class_start core
     class_start main
 
